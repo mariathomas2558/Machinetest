@@ -1,0 +1,23 @@
+.mainform{
+    width: 30%;
+    margin:100px ;
+    background-image: linear-gradient(rgb(228, 222, 222),gray);
+    padding: 25px;
+    box-shadow: 0 0 10px black;
+   
+    
+}
+
+.formbtn{
+    background-image: linear-gradient(rgb(228, 222, 222),rgb(83, 82, 82));
+    border: none;
+   
+    color: black;
+    font-weight: bold;
+}
+.display{
+   background-image: linear-gradient(rgb(228, 222, 222),rgb(83, 82, 82)); 
+   width: 20%;
+   box-shadow: 0 0 10px; 
+  
+}

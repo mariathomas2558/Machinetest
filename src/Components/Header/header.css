@@ -1,0 +1,25 @@
+.headerlink{
+    text-decoration: none;
+    margin-left: 20px;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 10px;
+
+}
+
+.headerlink:hover{
+    background-image: linear-gradient(to right,black,rgb(192, 15, 15),black);
+    color: white;
+    box-shadow: 0 0 10px red;
+   
+    
+}
+.ml-auto{
+    margin-left: auto;
+    padding: 20px; 
+      
+}
+.mainheader{
+    font-weight: bolder;
+}
