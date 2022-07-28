@@ -2,71 +2,94 @@ import React, { useEffect, useState } from 'react'
 import {Table} from 'react-bootstrap';
 import './taskone.css'
 import axios from 'axios'
+import ReactPaginate from "react-paginate";
 
 export default function Taskone() {
-    const [users,setUsers]=useState([]);
+     // const [users, setUsers] = useState(JsonData.slice(0, 50));
+  const [pageNumber, setPageNumber] = useState(0);
+  const [data, setData] = useState([]);
 
-    useEffect(()=>{
-        axios.get('https://jsonplaceholder.typicode.com/users').then((res)=>{
-            setUsers(res.data);
-            console.log(users);
-        })
-    },[])
+  const usersPerPage = 2;
+  const pagesVisited = pageNumber * usersPerPage;
+
+  const displayUsers = data.slice(pagesVisited, pagesVisited + usersPerPage);
+
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((res) => setData(res.data));
+    console.log(data);
+  }, [data]);
+  const pageCount = Math.ceil(data.length / usersPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   return (
-    <div >
-    <Table bordered hover className='table'>
-    <thead>
-      <tr>
-        <th rowSpan={3}>Id</th>
-        <th rowSpan={3}>Name</th>
-        <th rowSpan={3}>Username</th>
-        <th rowSpan={3}>Email</th>
-        <th colSpan={6}>Address</th>
-        <th rowSpan={3}>Phone</th>
-        <th rowSpan={3}>Website</th>
-        <th colSpan={3}>Company</th>
-       
-      </tr>
-       <tr> 
-          <th rowSpan={2}>Street</th>
-          <th rowSpan={2}>Suite</th>
-          <th rowSpan={2}>City</th>
-          <th rowSpan={2}>Zipcode</th>
-          <th colSpan={2}>Geo</th>
-          <th rowSpan={2}>Name</th>
-          <th rowSpan={2}>CatchPhrase</th>
-          <th rowSpan={2}>Bs</th>
-      </tr>
-      <tr>
-          <th>lat</th>
-          <th>lng</th>
-      </tr>
-    </thead>
-    <tbody className='tablebody'>
-{users.map((obj)=>(
+    <div className="App">
+   
+      <Table bordered hover className="table">
+        <thead>
+          <tr>
+            <th rowSpan={2}>Id</th>
+            <th rowSpan={3}>Name</th>
+            <th rowSpan={3}>Username</th>
+            <th rowSpan={3}>Email</th>
+            <th colSpan={6}>Address</th>
+            <th rowSpan={3}>Phone</th>
+            <th rowSpan={3}>Website</th>
+            <th colSpan={3}>Company</th>
+          </tr>
+          <tr>
+            <th rowSpan={2}>Street</th>
+            <th rowSpan={2}>Suite</th>
+            <th rowSpan={2}>City</th>
+            <th rowSpan={2}>Zipcode</th>
+            <th colSpan={2}>Geo</th>
+            <th rowSpan={2}>Name</th>
+            <th rowSpan={2}>CatchPhrase</th>
+            <th rowSpan={2}>Bs</th>
+          </tr>
+          <tr>
+            <th>lat</th>
+            <th>lng</th>
+          </tr>
+        </thead>
+        <tbody className="tablebody">
+          {displayUsers.map((user) => (
+            <tr>
+              <td>{user.id}</td>
+              <td>{user.name}</td>
+              <td>{user.username}</td>
+              <td>{user.email}</td>
+              <td>{user.address.street}</td>
+              <td>{user.address.suite}</td>
+              <td>{user.address.city}</td>
+              <td>{user.address.zipcode}</td>
+              <td>{user.address.geo.lat}</td>
+              <td>{user.address.geo.lng}</td>
+              <td>{user.phone}</td>
+              <td>{user.website}</td>
+              <td>{user.company.name}</td>
+              <td>{user.company.catchPhrase}</td>
+              <td>{user.company.bs}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
 
-      <tr>
-        <td>{obj.id}</td>
-        <td>{obj.name}</td>
-        <td>{obj.username}</td>
-        <td>{obj.email}</td>
-        <td>{obj.address.street}</td>
-        <td>{obj.address.suite}</td>
-        <td>{obj.address.city}</td>
-        <td>{obj.address.zipcode}</td>
-        <td>{obj.address.geo.lat}</td>
-        <td>{obj.address.geo.lng}</td>
-        <td>{obj.phone}</td>
-        <td>{obj.website}</td>
-        <td>{obj.company.name}</td>
-        <td>{obj.company.catchPhrase}</td>
-        <td>{obj.company.bs}</td>
-       
-      </tr>
-      ))
-   }
-    </tbody>
-  </Table>
-  </div>
-  )
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBttns"}
+        previousLinkClassName={"previousBttn"}
+        nextLinkClassName={"nextBttn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+      />
+    </div>
+  );
 }

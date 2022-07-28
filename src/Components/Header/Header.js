@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, Navbar, NavDropdown, TabContainer } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import './header.css'
 
@@ -7,18 +7,24 @@ import './header.css'
 function Header() {
   return (
     <div>
-         <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand className='mainheader'>Zartek Technologies</Navbar.Brand>
+        
+
+<Navbar bg="light" expand="lg" className='navbar'>
+      <Container>
+        <Navbar.Brand ><Link to='/' style={{textDecoration:"none" ,color:"black",fontWeight:"bolder"}}> Zartek Technologies</Link></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-           <Link to='/taskone' className='headerlink'>Pagination</Link>
-           <Link to='/tasktwo' className='headerlink'>Toggle</Link>
-           <Link to='/taskthree' className='headerlink'>InputDisplay</Link>
-           <Link to='/taskfour' className='headerlink'>ParentChild</Link>
-           
+            {/* <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link> */}
+          <Link to='/taskone' className='headerlink text-dark ml-4 '>Pagination</Link>
+           <Link to='/tasktwo' className='headerlink text-dark ml-4'>Toggle</Link>
+           <Link to='/taskthree' className='headerlink text-dark ml-4'>InputDisplay</Link>
+           <Link to='/taskfour' className='headerlink text-dark ml-4'>ParentChild</Link>
           </Nav>
-        </Container>
-      </Navbar>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
     </div>
   )
 }

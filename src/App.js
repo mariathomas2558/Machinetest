@@ -7,12 +7,12 @@ import Taskthree from './Components/Thirdtask/Taskthree';
 import Tasktwo from './Components/Secondtask/Tasktwo';
 import Taskone from './Components/Firsttask/Taskone';
 import Home from './Components/Home'
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
     <div>
       <Header/>
-      {/* <Home/> */}
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='taskone' element={ <Taskone/>}/>
@@ -20,6 +20,7 @@ function App() {
         <Route path='taskthree' element={ <Taskthree/>}/>
         <Route path='taskfour' element={ <Parent/>}/>
       </Routes>
+     <Footer />
 
     </div>
   );

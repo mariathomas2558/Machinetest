@@ -1,15 +1,67 @@
-.toggle{
-    color: rgb(133, 21, 85);
-    margin: 100px;
-    background-color: rgb(225, 187, 208);
-    width: 400px;
-    margin-left: 600px;
-}
-.togglebtn{
-    border-radius: 10px;
-    padding: 10px;
-   /* position: fixed; */
-   margin: 0px 10px;
-   /* position: fixed; */
+.App {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    margin-bottom: 230px;
+  }
   
-}
+  .user {
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #b3e3ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
+    margin: 20px;
+  }
+  
+  .paginationBttns {
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .paginationBttns a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid #2b2eff;
+    color: #9090a1;
+    cursor: pointer;
+    text-decoration: none !important;
+  }
+  
+  .paginationBttns a:hover {
+    color: white;
+    background-color: #2b2eff;
+  }
+  
+  .paginationActive a {
+    color: white;
+    background-color: #2b2eff;
+  }
+  
+  /* .paginationDisabled a {
+    color: grey;
+    background-color: grey;
+  } */
+  @media only screen and (max-width: 1300px) {
+    .table {
+      margin-left: 120px !important;
+    }
+  }
+  .box{
+    height: 100px;
+    width: 140px;
+  }
+  .box2{
+    height: 90px;
+    width: 160px;
+  }

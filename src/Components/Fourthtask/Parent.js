@@ -9,14 +9,13 @@ export default function Parent() {
   
   return (
     
-    <div className='App' style={{margin:'100px',}}>
-      <center>
+    <div className='App mt-5'>
+    
       <h2 className='heading'>{text}</h2>
-        </center>
+    
         <Textcontex.Provider value={[text,setText]}>
         <Child/>
         </Textcontex.Provider>
-       
     </div>
      
   )
